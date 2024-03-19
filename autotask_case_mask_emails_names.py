@@ -1,6 +1,6 @@
 """
 This python script will read your excel file and mask name references to protect the named information.
-Name your files correctly and save the file as "All_Ticket_last_6_Months_output.xlsx", in xlsx format.
+Name your files correctly and save the file as "Ticket_last_6_Months_output.xlsx", in xlsx format.
 Also, the sheet_name has to be 'Sheet1'
 Requires, pandas, openpyxl modules for this to work.
 """
@@ -15,7 +15,7 @@ def mask_name(name):
     return ' '.join(masked_words)
 
 # Read the Excel file with masked emails
-file_path = 'C:\\Python312\\Scripts\\All_Ticket_last_6_Months_output.xlsx'
+file_path = 'C:\\Python312\\Scripts\\Ticket_last_6_Months_output.xlsx'
 sheet_name = 'Sheet1'  # Change this to your sheet name if different
 
 # Read the Excel file
@@ -29,5 +29,5 @@ for column in data.columns:
     data[column] = data[column].astype(str).apply(lambda x: re.sub(name_pattern, lambda y: mask_name(y.group()), x))
 
 # Save the modified data to a new Excel file
-output_file = 'C:\\Python312\\Scripts\\All_Ticket_last_6_Months_output_names_removed.xlsx'
+output_file = 'C:\\Python312\\Scripts\\Ticket_last_6_Months_output_names_removed.xlsx'
 data.to_excel(output_file, index=False)
