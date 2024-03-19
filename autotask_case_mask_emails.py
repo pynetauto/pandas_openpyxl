@@ -1,6 +1,6 @@
 """
 This python script will read your excel file and mask all email alias to protect the email information.
-Name your files correctly and save the file as "All_Ticket_last_6_Months.xlsx", in xlsx format.
+Name your files correctly and save the file as "Ticket_last_6_Months.xlsx", in xlsx format.
 Also, the sheet_name has to be 'Sheet1'
 Requires, pandas, openpyxl modules for this to work.
 """
@@ -20,7 +20,7 @@ def mask_email(email):
         return email
 
 # Read the Excel file
-file_path = 'C:\\Python312\\Scripts\\All_Ticket_last_6_Months.xlsx'
+file_path = 'C:\\Python312\\Scripts\\Ticket_last_6_Months.xlsx'
 sheet_name = 'Sheet1'  # Change this to your sheet name if different
 
 # Read the Excel file
@@ -34,5 +34,5 @@ for column in data.columns:
     data[column] = data[column].astype(str).apply(lambda x: re.sub(email_pattern, lambda y: mask_email(y.group()), x))
 
 # Save the modified data to a new Excel file
-output_file = 'C:\\Python312\\Scripts\\All_Ticket_last_6_Months_output.xlsx'
+output_file = 'C:\\Python312\\Scripts\\Ticket_last_6_Months_output.xlsx'
 data.to_excel(output_file, index=False)
